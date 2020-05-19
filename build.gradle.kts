@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.3.0.RELEASE"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
+	id("com.google.cloud.tools.jib") version "2.1.0"
 	kotlin("jvm") version "1.3.72"
 	kotlin("plugin.spring") version "1.3.72"
 	kotlin("plugin.jpa") version "1.3.72"
@@ -50,5 +51,23 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
+	}
+}
+
+val username= if (hasProperty("docker_username")) findProperty("docker_username") as String else ""
+val password = if (hasProperty("docker_password")) findProperty("docker_password") as String else ""
+
+jib {
+	from {
+		image = "shinyay/adoptopenjdk11-minimum"
+	}
+	to {
+		image = "registry.hub.docker.com/shinyay/${project.name}:${project.version}"
+		auth.username = username
+		auth.password = password
+	}
+	container {
+		jvmFlags = mutableListOf("-Xms512m", "-Xdebug")
+		creationTime = "USE_CURRENT_TIMESTAMP"
 	}
 }
