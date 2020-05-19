@@ -1,11 +1,11 @@
-package io.pivotal.shinyay.k8s
+package com.google.shinyay
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SpringK8sGsApplication
+class SpringCloudK8sGsApplication
 
 fun main(args: Array<String>) {
-	runApplication<SpringK8sGsApplication>(*args)
+	runApplication<SpringCloudK8sGsApplication>(*args)
 }

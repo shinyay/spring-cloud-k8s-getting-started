@@ -1,1 +1,1 @@
-rootProject.name = "spring-k8s-gs"
+rootProject.name = "spring-cloud-k8s-gs"
