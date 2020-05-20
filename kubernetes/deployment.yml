@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: app
   labels:
     app: spring-app
 spec:
@@ -15,7 +15,8 @@ spec:
         app: spring-app
     spec:
       containers:
-        - name: shinyay/spring-cloud-k8s-gs:0.0.1-SNAPSHOT
+        - name: app
+          image: shinyay/spring-cloud-k8s-gs:0.0.1-SNAPSHOT
           ports:
             - containerPort: 8080
           env:
