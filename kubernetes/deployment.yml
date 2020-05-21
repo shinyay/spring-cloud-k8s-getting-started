@@ -41,3 +41,17 @@ spec:
                   name: db-security
                   key: db.user.password
       serviceAccountName: config-reader
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  labels:
+    app: spring-app
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: spring-app
+  type: NodePort
