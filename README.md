@@ -1,6 +1,6 @@
-# Name
+# Spring Cloud Kubernetes Getting Started
 
-Overview
+Spring Cloud Kubernetes using Spring Data REST on KIND
 
 ## Description
 
