@@ -54,4 +54,18 @@ spec:
       protocol: TCP
   selector:
     app: spring-app
-  type: NodePort
+#  type: NodePort
+---
+# For KIND
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: app
+              servicePort: 8080
