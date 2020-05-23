@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgresql-deployment
+  name: postgresql
   labels:
     app: postgresql
 spec:
