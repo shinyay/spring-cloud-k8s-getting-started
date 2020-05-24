@@ -176,11 +176,11 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: default
   name: pod-reader
+  namespace: default
 rules:
-  - apiGroups: [""]
-    resources: ["pods","configmaps"]
+  - apiGroups: ["", "extensions", "apps"]
+    resources: ["pods", "configmaps", "services", "endpoints", "secrets"]
     verbs: ["get", "watch", "list"]
 ```
 #### rolebinding.yml
