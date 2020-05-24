@@ -1,5 +1,17 @@
 spring:
+  application:
+    name: cloud-k8s-app
   cloud:
     kubernetes:
       config:
-        name: app-config
+        name: [app-config, postgres-config]
+        namespace: default
+        enable-api: true
+      secrets:
+        name: db-security
+        namespace: default
+        enable-api: true
+  datasource:
+    url: jdbc:postgresql://${${POSTGRES_SERVICE}.service.host}:${${POSTGRES_SERVICE}.service.port}/${POSTGRES_DB_NAME}
+    username: ${POSTGRES_DB_USER}
+    password: ${POSTGRES_DB_PASSWORD}
