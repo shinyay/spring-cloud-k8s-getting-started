@@ -332,6 +332,23 @@ $ curl -X POST http://localhost/employees \
 # curl -X GET http://localhost/employees
 ```
 
+```shell script
+$ kubectl exec -it postgresql-1234567890-abcde /bin/bash
+
+root@postgresql-1234567890-abcde:/# psql -U sample employee
+
+psql (9.6.5)
+Type "help" for help.
+
+employee=# select * from employee;
+ id |      email       |  name
+----+------------------+---------
+  1 | johndoe@demo.com | JohnDoe
+
+employee=# \q
+root@postgresql-1234567890-abcde:/# exit
+```
+
 ## Features
 
 - feature:1
