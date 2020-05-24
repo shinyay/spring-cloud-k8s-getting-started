@@ -6,6 +6,9 @@ Spring Cloud Kubernetes using Spring Data REST on kind
 
 This project is deployed on [kind](https://kind.sigs.k8s.io).
 
+I committed Application container image below:
+- [DockeHub - shinyay/spring-cloud-k8s-gs](https://hub.docker.com/repository/docker/shinyay/spring-cloud-k8s-gs)
+
 ### Spring Dependencies
 
 The followings are dependencies for this project.
@@ -217,6 +220,14 @@ rules:
     resources: ["pods", "configmaps", "services", "endpoints", "secrets"]
     verbs: ["get", "watch", "list"]
 ```
+
+Depending on the requirements, it needs get, list and watch permission on the following resources:
+
+|Dependency|Resources|
+|----------|---------|
+|spring-cloud-starter-kubernetes|pods, services, endpoints|
+|spring-cloud-starter-kubernetes-config|configmaps, secrets|
+
 #### rolebinding.yml
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
