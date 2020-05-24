@@ -156,9 +156,9 @@ spring.datasource.password=${POSTGRES_DB_PASSWORD}
 
 ### 4. Create Service Account for ConfifMap
 ```shell script
-$ kubectl apply -f serviceaccount.yml
-$ kubectl apply -f role.yml
-$ kubectl apply -f rolebinding.yml
+$ kubectl apply -f kubernetes/serviceaccount.yml
+$ kubectl apply -f kubernetes/role.yml
+$ kubectl apply -f kubernetes/rolebinding.yml
 ```
 
 #### serviceaccount.yml
