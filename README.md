@@ -142,7 +142,7 @@ spec:
 ### 3. Deploy Spring Configuration for ConfigMap
 ```shell script
 $ kubectl create configmap app-config \
-    --from-file=application.properties
+    --from-file=kubernetes/application.properties
 ```
 
 #### application.properties
