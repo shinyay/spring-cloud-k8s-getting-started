@@ -139,7 +139,12 @@ spec:
     - port: 5432
 ```
 
-### 3. Deploy Spring Configuration for ConfigMap
+### 3. Define Spring Configuration
+- application.yml
+  - Load from ConfigMap
+- bootstrap.yml
+  - Initial Load
+
 ```shell script
 $ kubectl create configmap app-config \
     --from-file=kubernetes/application.yml
@@ -154,6 +159,34 @@ spring:
     platform: postgresql
     driver-class-name: org.postgresql.Driver
 ```
+
+#### bootstrap.yml
+```yaml
+spring:
+  application:
+    name: cloud-k8s-app
+  cloud:
+    kubernetes:
+      config:
+        name: [app-config, postgres-config]
+        namespace: default
+        enable-api: true
+      secrets:
+        name: db-security
+        namespace: default
+        enable-api: true
+  datasource:
+    url: jdbc:postgresql://${${POSTGRES_SERVICE}.service.host}:${${POSTGRES_SERVICE}.service.port}/${POSTGRES_DB_NAME}
+    username: ${POSTGRES_DB_USER}
+    password: ${POSTGRES_DB_PASSWORD}
+```
+
+|Parameter|ConfigMap/Secret|
+|---------|----------------|
+|`POSTGRES_SERVICE`|ConfigMap|
+|`POSTGRES_DB_NAME`|ConfigMap|
+|`POSTGRES_DB_USER`|Secret|
+|`POSTGRES_DB_PASSWORD`|Secret|
 
 ### 4. Create Service Account for ConfifMap
 ```shell script
