@@ -1,0 +1,6 @@
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    platform: postgresql
+    driver-class-name: org.postgresql.Driver
