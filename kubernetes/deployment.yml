@@ -18,6 +18,7 @@ spec:
       containers:
         - name: app
           image: shinyay/spring-cloud-k8s-gs:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
