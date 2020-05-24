@@ -145,13 +145,14 @@ $ kubectl create configmap app-config \
     --from-file=kubernetes/application.properties
 ```
 
-#### application.properties
-```properties
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.jpa.hibernate.ddl-auto=create
-spring.datasource.url=jdbc:postgresql://${${POSTGRES_SERVICE}.service.host}:${${POSTGRES_SERVICE}.service.port}/${POSTGRES_DB_NAME}
-spring.datasource.username=${POSTGRES_DB_USER}
-spring.datasource.password=${POSTGRES_DB_PASSWORD}
+#### application.yml
+```yaml
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    platform: postgresql
+    driver-class-name: org.postgresql.Driver
 ```
 
 ### 4. Create Service Account for ConfifMap
